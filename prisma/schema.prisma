@@ -21,7 +21,28 @@ model User {
   firstname String?
   lastname  String?
   posts     Post[]
+  lists     List[]
   role      Role
+}
+
+model List {
+  id        String     @id @default(cuid())
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  name      String     @unique
+  items     ListItem[]
+  author    User?      @relation(fields: [id], references: [id])
+}
+
+model ListItem {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  parent    List     @relation(fields: [id], references: [id])
+  name      String
+  price     Int?
+  url       String
+  purchased Boolean
 }
 
 model Post {
