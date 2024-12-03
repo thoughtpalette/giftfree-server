@@ -20,7 +20,6 @@ model User {
   password  String
   firstname String?
   lastname  String?
-  posts     Post[]
   lists     List[]
   role      Role
 }
@@ -43,17 +42,6 @@ model ListItem {
   price     Int?
   url       String
   purchased Boolean
-}
-
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  published Boolean
-  title     String
-  content   String?
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  String?
 }
 
 enum Role {

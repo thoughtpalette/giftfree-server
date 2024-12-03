@@ -2,10 +2,8 @@ import { PrismaService } from 'nestjs-prisma';
 import {
   Resolver,
   Query,
-  Parent,
   Mutation,
   Args,
-  ResolveField,
 } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
 import { UserEntity } from '../common/decorators/user.decorator';
@@ -48,10 +46,5 @@ export class UsersResolver {
       user.password,
       changePassword,
     );
-  }
-
-  @ResolveField('posts')
-  posts(@Parent() author: User) {
-    return this.prisma.user.findUnique({ where: { id: author.id } }).posts();
   }
 }
