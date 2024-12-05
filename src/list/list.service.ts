@@ -8,15 +8,26 @@ export class ListService {
   ) {
   }
 
-  async getListsById(id: string) {
+  async getLists(userId: string) {
     return await this.prisma.list.findMany({
         where: {
             author: {
-                id,
+                id: userId,
             },
         },
         include: {
             items: true
+        }
+    })
+  }
+
+  async getList(listId: string) {
+    return await this.prisma.list.findUnique({
+        where: {
+            id: listId
+        },
+        include: {
+            items: true,
         }
     })
   }

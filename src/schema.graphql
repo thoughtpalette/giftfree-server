@@ -29,11 +29,25 @@ scalar JWT
 type List {
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
-  id: String!
+  id: ID!
+  items: [ListItem!]!
   name: String!
 
   """Identifies the date and time when the object was last updated."""
   updatedAt: DateTime!
+}
+
+type ListItem {
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  price: Int!
+  purchased: Boolean!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+  url: String!
 }
 
 input LoginInput {
@@ -50,7 +64,8 @@ type Mutation {
 }
 
 type Query {
-  getLists(id: String!): [List!]!
+  getList(listId: String!): List!
+  getLists(userId: String!): [List!]!
   hello(name: String!): String!
   helloWorld: String!
   me: User!
