@@ -35,7 +35,7 @@ import { ListModule } from './list/list.module';
 
     AuthModule,
     UsersModule,
-    ListModule
+    ListModule,
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],

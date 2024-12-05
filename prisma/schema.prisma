@@ -30,14 +30,16 @@ model List {
   updatedAt DateTime   @updatedAt
   name      String     @unique
   items     ListItem[]
-  author    User?      @relation(fields: [id], references: [id])
+  author    User?      @relation(fields: [authorId], references: [id])
+  authorId  String
 }
 
 model ListItem {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  parent    List     @relation(fields: [id], references: [id])
+  list    List     @relation(fields: [listId], references: [id])
+  listId  String
   name      String
   price     Int?
   url       String

@@ -1,9 +1,5 @@
 import 'reflect-metadata';
-import {
-  ObjectType,
-  Field,
-  ID,
-} from '@nestjs/graphql';
+import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { BaseModel } from '../../common/models/base.model';
 import { ListItem } from './list-item.model';
 
@@ -16,5 +12,5 @@ export class List extends BaseModel {
   name: string;
 
   @Field(() => [ListItem])
-  items: ListItem[]
+  items: ListItem[];
 }

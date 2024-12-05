@@ -13,6 +13,6 @@ export class AppResolver {
 
   @Query(() => String)
   test(@Args('yeet') yeet: string): string {
-    return `cool ${yeet}`
+    return `cool ${yeet}`;
   }
 }

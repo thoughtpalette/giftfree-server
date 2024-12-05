@@ -12,11 +12,11 @@ export class ListResolver {
 
   @Query(() => [List])
   async getLists(@Args('userId') userId: string): Promise<List[]> {
-    return this.listService.getLists(userId)
+    return this.listService.getLists(userId);
   }
 
   @Query(() => List)
   async getList(@Args('listId') listId: string): Promise<List> {
-    return this.listService.getList(listId)
+    return this.listService.getList(listId);
   }
 }
