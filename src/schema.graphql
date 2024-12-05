@@ -26,6 +26,16 @@ A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
 """
 scalar JWT
 
+type List {
+  """Identifies the date and time when the object was created."""
+  createdAt: DateTime!
+  id: String!
+  name: String!
+
+  """Identifies the date and time when the object was last updated."""
+  updatedAt: DateTime!
+}
+
 input LoginInput {
   email: String!
   password: String!
@@ -40,9 +50,11 @@ type Mutation {
 }
 
 type Query {
+  getLists(id: String!): [List!]!
   hello(name: String!): String!
   helloWorld: String!
   me: User!
+  test(yeet: String!): String!
 }
 
 """User role"""

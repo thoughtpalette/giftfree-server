@@ -1,10 +1,5 @@
 import { PrismaService } from 'nestjs-prisma';
-import {
-  Resolver,
-  Query,
-  Mutation,
-  Args,
-} from '@nestjs/graphql';
+import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { UseGuards } from '@nestjs/common';
 import { UserEntity } from '../common/decorators/user.decorator';
 import { GqlAuthGuard } from '../auth/gql-auth.guard';

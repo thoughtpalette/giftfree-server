@@ -10,4 +10,9 @@ export class AppResolver {
   hello(@Args('name') name: string): string {
     return `Hello ${name}!`;
   }
+
+  @Query(() => String)
+  test(@Args('yeet') yeet: string): string {
+    return `cool ${yeet}`
+  }
 }
