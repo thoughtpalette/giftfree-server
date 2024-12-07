@@ -11,6 +11,13 @@ input AddItemInput {
   url: String!
 }
 
+input AddListInput {
+  authorId: String!
+  description: String!
+  eventDate: DateTime
+  name: String!
+}
+
 type Auth {
   """JWT access token"""
   accessToken: JWT!
@@ -36,10 +43,12 @@ A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
 scalar JWT
 
 type List {
-  author: User!
+  author: User
+  authorId: String!
 
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
+  eventDate: DateTime
   id: ID!
   items: [ListItem!]!
   name: String!
@@ -70,7 +79,9 @@ input LoginInput {
 
 type Mutation {
   addItem(data: AddItemInput!): ListItem!
+  addList(data: AddListInput!): List!
   changePassword(data: ChangePasswordInput!): User!
+  deleteItem(id: String!, listId: String!): List!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
   signup(data: SignupInput!): Auth!

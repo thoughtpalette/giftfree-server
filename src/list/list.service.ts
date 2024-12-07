@@ -1,6 +1,7 @@
 import { PrismaService } from 'nestjs-prisma';
 import { Injectable } from '@nestjs/common';
 import { AddItemInput } from './dto/add-item-input';
+import { AddListInput } from './dto/add-list-input';
 
 @Injectable()
 export class ListService {
@@ -36,5 +37,21 @@ export class ListService {
     return await this.prisma.listItem.create({
       data: addItemData,
     });
+  }
+
+  async addList(addListData: AddListInput) {
+    return await this.prisma.list.create({
+      data: addListData,
+    });
+  }
+
+  async deleteItem(id: string, listId) {
+    await this.prisma.listItem.delete({
+      where: {
+        id,
+      }
+    })
+
+    return this.getList(listId)
   }
 }

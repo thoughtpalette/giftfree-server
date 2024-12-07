@@ -1,5 +1,4 @@
 import { InputType, Field } from '@nestjs/graphql';
-import { List } from '../models/list.model';
 
 @InputType()
 export class AddItemInput {

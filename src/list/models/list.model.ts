@@ -12,9 +12,15 @@ export class List extends BaseModel {
   @Field()
   name: string;
 
-  @Field(() => User)
+  @Field(() => User, { nullable: true })
   author?: User
+
+  @Field()
+  authorId: string
 
   @Field(() => [ListItem])
   items: ListItem[];
+
+  @Field(() => Date, { nullable: true })
+  eventDate?: Date
 }

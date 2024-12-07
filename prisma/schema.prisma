@@ -29,6 +29,8 @@ model List {
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   name      String     @unique
+  eventDate DateTime?
+  description String?
   items     ListItem[]
   author    User?      @relation(fields: [authorId], references: [id])
   authorId  String
