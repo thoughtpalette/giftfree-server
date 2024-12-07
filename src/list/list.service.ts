@@ -45,6 +45,14 @@ export class ListService {
     });
   }
 
+  async deleteList(id: string) {
+    return await this.prisma.list.delete({
+      where: {
+        id,
+      }
+    })
+  }
+
   async deleteItem(id: string, listId) {
     await this.prisma.listItem.delete({
       where: {

@@ -82,6 +82,7 @@ type Mutation {
   addList(data: AddListInput!): List!
   changePassword(data: ChangePasswordInput!): User!
   deleteItem(id: String!, listId: String!): List!
+  deleteList(id: String!): List!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
   signup(data: SignupInput!): Auth!

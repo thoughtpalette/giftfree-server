@@ -34,6 +34,11 @@ export class ListResolver {
   }
 
   @Mutation(() => List)
+  async deleteList(@Args('id') id: string) {
+    return this.listService.deleteList(id)
+  }
+
+  @Mutation(() => List)
   async deleteItem(@Args('id') id: string, @Args('listId') listId: string) {
     return this.listService.deleteItem(id, listId)
   }
