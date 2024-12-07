@@ -13,7 +13,7 @@ input AddItemInput {
 
 input AddListInput {
   authorId: String!
-  description: String!
+  description: String
   eventDate: DateTime
   name: String!
 }

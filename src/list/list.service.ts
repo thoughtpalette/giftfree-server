@@ -22,7 +22,7 @@ export class ListService {
   }
 
   async getList(listId: string) {
-    return await this.prisma.list.findUnique({
+    return await this.prisma.list.findUniqueOrThrow({
       where: {
         id: listId,
       },
@@ -46,14 +46,23 @@ export class ListService {
   }
 
   async deleteList(id: string) {
-    return await this.prisma.list.delete({
-      where: {
-        id,
-      }
-    })
+    const [_, deleteListRes] = await Promise.all([
+      this.prisma.listItem.deleteMany({
+        where: {
+          listId: id
+        }
+      }),
+      this.prisma.list.delete({
+        where: {
+          id,
+        }
+      })
+    ])
+
+    return deleteListRes
   }
 
-  async deleteItem(id: string, listId) {
+  async deleteItem(id: string, listId: string) {
     await this.prisma.listItem.delete({
       where: {
         id,
