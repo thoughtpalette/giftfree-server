@@ -15,7 +15,8 @@ export class ListService {
       },
       include: {
         items: true,
-      },
+        author: true,
+      }
     });
   }
 
@@ -26,6 +27,7 @@ export class ListService {
       },
       include: {
         items: true,
+        author: true
       },
     });
   }

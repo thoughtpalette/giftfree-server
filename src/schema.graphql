@@ -36,6 +36,8 @@ A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
 scalar JWT
 
 type List {
+  author: User!
+
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
   id: ID!
