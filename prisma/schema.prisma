@@ -38,12 +38,13 @@ model ListItem {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  list    List     @relation(fields: [listId], references: [id])
+  list    List?    @relation(fields: [listId], references: [id])
   listId  String
   name      String
   price     Int?
   url       String
   purchased Boolean
+  notes     String?
 }
 
 enum Role {

@@ -1,5 +1,6 @@
 import { PrismaService } from 'nestjs-prisma';
 import { Injectable } from '@nestjs/common';
+import { AddItemInput } from './dto/add-item-input';
 
 @Injectable()
 export class ListService {
@@ -26,6 +27,12 @@ export class ListService {
       include: {
         items: true,
       },
+    });
+  }
+
+  async addItem(addItemData: AddItemInput) {
+    return await this.prisma.listItem.create({
+      data: addItemData,
     });
   }
 }

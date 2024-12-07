@@ -2,6 +2,15 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input AddItemInput {
+  listId: String!
+  name: String!
+  notes: String
+  price: Int
+  purchased: Boolean!
+  url: String!
+}
+
 type Auth {
   """JWT access token"""
   accessToken: JWT!
@@ -41,7 +50,9 @@ type ListItem {
   """Identifies the date and time when the object was created."""
   createdAt: DateTime!
   id: ID!
+  listId: String!
   name: String!
+  notes: String
   price: Int!
   purchased: Boolean!
 
@@ -56,6 +67,7 @@ input LoginInput {
 }
 
 type Mutation {
+  addItem(data: AddItemInput!): ListItem!
   changePassword(data: ChangePasswordInput!): User!
   login(data: LoginInput!): Auth!
   refreshToken(token: JWT!): Token!
