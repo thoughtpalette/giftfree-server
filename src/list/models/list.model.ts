@@ -18,6 +18,9 @@ export class List extends BaseModel {
   @Field()
   authorId: string
 
+  @Field({ nullable: true })
+  description?: string
+
   @Field(() => [ListItem])
   items: ListItem[];
 
