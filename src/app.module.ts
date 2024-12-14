@@ -11,9 +11,12 @@ import config from './common/configs/config';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { GqlConfigService } from './gql-config.service';
 import { ListModule } from './list/list.module';
+import { HttpModule } from '@nestjs/axios';
+import { LinkModule } from './link/link.module';
 
 @Module({
   imports: [
+    HttpModule,
     ConfigModule.forRoot({ isGlobal: true, load: [config] }),
     PrismaModule.forRoot({
       isGlobal: true,
@@ -36,6 +39,7 @@ import { ListModule } from './list/list.module';
     AuthModule,
     UsersModule,
     ListModule,
+    LinkModule
   ],
   controllers: [AppController],
   providers: [AppService, AppResolver],
